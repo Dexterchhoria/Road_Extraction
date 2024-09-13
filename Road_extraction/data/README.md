@@ -1,0 +1,6 @@
+Project description
+Installation instructions
+Usage instructions
+API documentation
+Database schema
+Contributing guidelines6
