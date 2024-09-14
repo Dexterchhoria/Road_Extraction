@@ -1,5 +1,6 @@
 {
-    "recommendations": [
-        "codeium.codeium"
-    ]
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance"
+  ]
 }
