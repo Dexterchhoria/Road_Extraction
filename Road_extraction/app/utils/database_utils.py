@@ -1,11 +1,17 @@
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from app.config.database_config import DATABASE_URL
 
-db = SQLAlchemy()
+# Create an engine and a session factory
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-def init_db(app):
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yourdatabase.db'  # Replace with your database URI
-    db.init_app(app)
-    with app.app_context():
-        db.create_all()
+def get_db_session():
+    """Provides a database session."""
+    db_session = SessionLocal()
+    try:
+        yield db_session
+    finally:
+        db_session.close()
 
 
