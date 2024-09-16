@@ -1,5 +1,12 @@
-class Alert:
-    def __init__(self, area_id, change_detected, message):
-        self.area_id = area_id
-        self.change_detected = change_detected
-        self.message = message
+from sqlalchemy import Column, Integer, String, Boolean
+from app.utils.database_utils import Base
+
+class Alert(Base):
+    __tablename__ = 'alerts'
+    
+    id = Column(Integer, primary_key=True, index=True)
+    area_id = Column(String, nullable=False)
+    change_detected = Column(Boolean, nullable=False)
+    message = Column(String, nullable=False)
+
+
