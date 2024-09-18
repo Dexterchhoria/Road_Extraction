@@ -1,0 +1,129 @@
+/* Reset and general styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Main layout */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.sidebar form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.sidebar input {
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.sidebar button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sidebar button:hover {
+  background-color: #0056b3;
+}
+
+/* Login and Sign Up buttons styling */
+.auth-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.auth-buttons button {
+  width: 48%;
+}
+
+/* Map container styling */
+.map-container {
+  flex: 1;
+  height: 100vh;
+  width: calc(100vw - 250px); /* Adjust width to account for sidebar */
+  position: relative;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+
+
+
+/* src/App.css */
+
+.sidebar .login-btn,
+.sidebar .signup-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sidebar .login-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.sidebar .login-btn:hover {
+  background-color: #0056b3;
+}
+
+.sidebar .signup-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.sidebar .signup-btn:hover {
+  background-color: #218838;
+}
+
