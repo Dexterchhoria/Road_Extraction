@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.models.road_data import RoadData, RoadChange
 from app.models.satellite_images import SatelliteImage
+from app.services.alert_service import send_alert
 from app.utils.database_utils import db
 from datetime import date
 
@@ -70,7 +71,21 @@ def add_road_change():
         db.session.add(road_change)
         db.session.commit()
 
-        return jsonify({'message': 'Road change added successfully'})
+        # Automatically send an alert after successfully adding the road change
+        alert_message = f"Road changes detected in region: {road_change.region} on {road_change.date}."
+        
+        # Use the hardcoded email address
+        email = "22mc3038@rgipt.ac.in"
+
+        # Send the alert email
+        try:
+            send_alert(email, alert_message)  # Ensure this is called
+            print("Alert sent successfully.")
+            return jsonify({'message': 'Road change added successfully, alert sent!'})
+        except Exception as e:
+            print(f"Error sending alert: {e}")
+            return jsonify({'message': 'Road change added successfully, but alert failed to send.'})
+
     except Exception as e:
         print(f"Error adding road change: {e}")
         return jsonify({'error': 'Internal Server Error'}), 500

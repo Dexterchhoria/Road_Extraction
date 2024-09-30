@@ -7,7 +7,7 @@ const AreaBox = ({ lat, lon, area }) => {
   const map = useMap();
 
   // Inverse scaling factor
-  const areaScaleFactor = 0.00001; // Adjust for your use case
+  const areaScaleFactor = 0.001; // Adjust for your use case
   const scaledArea = area * areaScaleFactor;
 
   // Bounding box calculation
@@ -27,7 +27,7 @@ const MapController = ({ lat, lon, area, zoomLevel }) => {
 
   return (
     <div className="map-container">
-      <MapContainer center={position} zoom={zoomLevel} minZoom={10} maxZoom={18} className="map">
+      <MapContainer center={position} zoom={zoomLevel} maxZoom={18} className="map">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

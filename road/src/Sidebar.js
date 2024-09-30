@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import LoginPage from './LoginPage';
-import SignupPage from './SignupPage'; // Import SignupPage component
+import SecondSidebar from './SecondSidebar'; 
 
 const Sidebar = ({ onUpdate }) => {
   const [latitude, setLatitude] = useState('');
@@ -9,8 +8,7 @@ const Sidebar = ({ onUpdate }) => {
   const [area, setArea] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false); // Add state for Signup page
+  const [showSecondSidebar, setShowSecondSidebar] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,24 +17,16 @@ const Sidebar = ({ onUpdate }) => {
       longitude: parseFloat(longitude),
       area: parseFloat(area),
       startDate,
-      endDate
+      endDate,
     });
   };
 
-  const handleLoginClick = () => {
-    setShowLogin(true);
+  const handleUpdateChangesClick = () => {
+    setShowSecondSidebar(true);
   };
 
-  const handleSignupClick = () => {
-    setShowSignup(true); // Show Signup page
-  };
-
-  const handleCloseLoginPage = () => {
-    setShowLogin(false);
-  };
-
-  const handleCloseSignupPage = () => {
-    setShowSignup(false); // Close Signup page
+  const handleCloseSecondSidebar = () => {
+    setShowSecondSidebar(false);
   };
 
   return (
@@ -91,10 +81,12 @@ const Sidebar = ({ onUpdate }) => {
         </label>
         <button type="submit">Update Map</button>
       </form>
-      <button onClick={handleLoginClick} className="login-btn">Login</button>
-      <button onClick={handleSignupClick} className="signup-btn">Sign Up</button>
-      {showLogin && <LoginPage onClose={handleCloseLoginPage} />}
-      {showSignup && <SignupPage onClose={handleCloseSignupPage} />} {/* Add SignupPage */}
+
+      <button onClick={handleUpdateChangesClick} className="update-btn">
+        Update Changes
+      </button>
+
+      {showSecondSidebar && <SecondSidebar onClose={handleCloseSecondSidebar} />}
     </div>
   );
 };

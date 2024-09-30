@@ -1,0 +1,50 @@
+/* src/TopBar.css */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#1A1F1F;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+    z-index: 1000;
+    border-bottom: 1px solid #36BCBA;;
+}
+
+.logo {
+    padding-left: 2%;
+    color: white;
+    font-size: 21px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    display: flex;
+    gap: 50px;
+}
+
+nav button {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1A1E1E;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100px;
+    line-height: 50px; /* Center text vertically */
+}
+
+nav button:hover {
+    color: #36BCBA;
+    background-color: #252A31;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar'; // Import Sidebar component
 import MapController from './MapController'; // Import MapController component
+import TopBar from './TopBar'; // Import TopBar component
 import './App.css';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* TopBar component */}
+      <TopBar />
+
       {/* Sidebar component with a callback to update the map */}
       <Sidebar onUpdate={handleUpdate} />
 

@@ -22,6 +22,7 @@ def send_change_alert():
     alert_message = f"Road changes detected in region: {change.region} on {change.date}."
     
     # Call the alert service to send the email
+    print(f"Attempting to send alert to {email} with message: {alert_message}")  # Debug print
     send_alert(email, alert_message)
 
     # Save the alert information in the database

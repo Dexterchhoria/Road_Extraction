@@ -1,4 +1,5 @@
 import smtplib
+
 from email.mime.text import MIMEText
 from app.config.email_config import SMTP_SERVER, SMTP_PORT, EMAIL_USER, EMAIL_PASSWORD
 
