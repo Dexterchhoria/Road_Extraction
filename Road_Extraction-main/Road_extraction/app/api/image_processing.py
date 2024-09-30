@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.services.image_processing_service import process_images_and_detect_changes
 from app.models.image_metadata import ImageMetadata
+from app.models.satellite_images import SatelliteImage  # Import SatelliteImage model
 from app.utils.database_utils import db
 from datetime import datetime
 
@@ -37,9 +38,31 @@ def process_images():
         return jsonify({'error': 'Failed to detect road changes'}), 500
 
     # Save metadata to the database
-    metadata = ImageMetadata(source="Resourcesat", capture_date=datetime.utcnow(), band_paths=",".join(new_band_paths), area_id=area_id)
+    metadata = ImageMetadata(
+        source="Resourcesat", 
+        capture_date=datetime.utcnow(), 
+        band_paths=",".join(new_band_paths), 
+        area_id=area_id
+    )
     db.session.add(metadata)
     db.session.commit()
 
     return jsonify({'message': 'Road changes detected', 'change_image_path': change_image_path})
+
+# New endpoint to process all satellite images from the database
+@image_processing_blueprint.route('/process_all_satellite_images', methods=['POST'])
+def process_all_satellite_images():
+    # Fetch all satellite images from the database
+    satellite_images = SatelliteImage.query.all()
+
+    if not satellite_images:
+        return jsonify({'error': 'No satellite images found to process'}), 404
+
+    # Process each satellite image
+    for image in satellite_images:
+        # Assuming the processing function handles binary image data
+        process_images_and_detect_changes([image.file_data], [image.file_data], area_id=None)
+
+    return jsonify({'message': 'Processing of all satellite images completed.'})
+
 

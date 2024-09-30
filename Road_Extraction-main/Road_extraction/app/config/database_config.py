@@ -1,1 +1,1 @@
-GIS_DATABASE_URI = "postgresql://user:password@localhost:5432/gisdb"
+DATABASE_URL = "postgresql://postgres:postgreSQL@localhost:5432/gisdb"
